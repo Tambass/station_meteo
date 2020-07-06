@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: #ddd;
+    position: relative;
+}
+
+section{
+    position: absolute;
+    top: 50px;
+    left: 250px;
+    background-color: #fff;
+    height: 200px;
+    width: 500px;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.ville h1{
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.658);
+}
+
+.mise-jour h2{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.445);
+}
+
+.temperature{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+Svg
+
