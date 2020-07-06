@@ -14,29 +14,28 @@
 
     <main>
         <div class="search">
-            <input role="textbox" aria-autocomplete="list" type="text" placeholder="recherche par ville ou code postale">
+            <input role="textbox" id="queryLoc" type="text" placeholder="recherche par ville ou code postale" value="roche-sur-yon">
+            <i class="fas fa-search" onclick="buttonClickGET()"></i>
             
-            <i class="fas fa-search">
-            </i>
         </div>
         
         
         <section class="en-tete">
             
             <div class="ville">
-                <h1>la roche sur yon</h1>
+                <h1 id="city"></h1>
             </div>
             <div class="mise-jour">
-                <h2>MAJ à 10:00</h2>
+                <h2 id="maj"></h2>
             </div>
             <div class="temperature">
                 <div class="temp">
-                    <span>30°C</span>
-                    <h3>ensoleillé</h3>
+                    <span id="temp"></span>
+                    <h3 id="weather-main">ensoleillé</h3>
                 </div>
                 <div class="svg">
-                    <span><img src="./images/soleil.png"></span>
-                    <h3>23°/9°</h3>
+                    <span id="weather-icon"><img src="./images/soleil.png"></span>
+                    <!--<h3>23°/9°</h3>-->
                 </div>
             </div>
             <div class="risque">
@@ -64,7 +63,7 @@
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span>5%</span>
+                            <span class="humidite-value">5%</span>
                         </div>
                     </a>
                 </li>
@@ -79,7 +78,7 @@
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span>0</span>
+                            <span class="humidite-value">0</span>
                         </div>
                     </a>
                 </li>
@@ -94,7 +93,7 @@
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span>5%</span>
+                            <span class="humidite-value">5%</span>
                         </div>
                     </a>
                 </li>
@@ -109,7 +108,7 @@
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span>5%</span>
+                            <span class="humidite-value">5%</span>
                         </div>
                     </a>
                 </li>
@@ -125,8 +124,8 @@
 
 
 
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 
 
 

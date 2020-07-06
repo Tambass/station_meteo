@@ -85,6 +85,7 @@ main{
 
 .temp {
     display: flex;
+    flex-direction: column;
 }
 
 .temp span {
