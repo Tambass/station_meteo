@@ -1,47 +1,104 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100vh;
-    background-color: #ddd;
-    position: relative;
+    background-color: rgb(68, 129, 185);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 
 main{
     display: flex;
     flex-direction: column;
 }
 
-section{
+/* première section
+====================*/
+
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 15px;
+    background-color:rgba(255, 255, 255, 0.308);
+}
+.search input{
+    background-color: transparent;
+    border: none;
+    padding: 0 10px;
+    margin-right: 20px;
+    width: 250px;
+    outline: none;
+}
+
+.en-tete{
     top: 50px;
     left: 250px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.637);
     height: 200px;
     width: 500px;
     border-radius: 15px;
     padding: 20px;
 }
 
-.ville h1{
+.ville h1 {
     text-transform: uppercase;
     margin-bottom: 10px;
-    color: rgba(0, 0, 0, 0.658);
+    color: rgb(255, 255, 255);
 }
 
-.mise-jour h2{
+.mise-jour h2 {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.445);
 }
 
-.temperature{
+.temperature {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
 }
 
+.svg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.svg img {
+    height: 60px;
+}
+
+.svg h3 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.temp {
+    display: flex;
+}
+
+.temp span {
+    font-size: 35px;
+}
+
+.temp h3 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.risque {
+    font-size: 14px;
+}
 .card{
     height: 200px;
     width: 500px;
@@ -60,4 +117,44 @@ section{
 }
 .card img{
     width: 30px;
+}
+
+.card {
+    margin-top: 20px;
+    height: 200px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.637);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.card h2{
+    margin-bottom: 20px;
+}
+
+.card ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    font-size: 10px;
+}
+
+.card ul li {
+    margin: 0 30px;
+}
+
+.card ul li a {
+    text-decoration: none;
+}
+
+.card img {
+    width: 30px;
+    margin: 8px 0;
+}
+
+.humidite img{
+    width: 5px;
 }
