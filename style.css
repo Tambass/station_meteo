@@ -13,10 +13,16 @@ body {
     align-items: center;
 }
 
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
 /* première section
 ====================*/
 
-.en-tete {
+.en-tete{
     top: 50px;
     left: 250px;
     background-color: rgba(255, 255, 255, 0.637);
@@ -60,8 +66,6 @@ body {
 
 .temp {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }
 
 .temp span {
