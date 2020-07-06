@@ -4,17 +4,20 @@ var minutes = now.getMinutes();
 
 const miseAJour = document.getElementById("maj");
 miseAJour.innerText = "Mise à jour à " + heure + ":" + minutes;
-console.log(miseAJour);
+//console.log(miseAJour);
 
 //const city = document.getElementById('city')
 //const queryLoc = document.getElementById('queryLoc').value
 //city.innerText = queryLoc
 
 var callBackGetSuccess = function (data) {
-  console.log("donnees api", data);
+  //console.log("donnees api", data);
   //alert("Meteo temp  : "  + data.main.temp);
   var temp = document.getElementById("temp");
   temp.innerHTML = data.main.temp + "°C";
+  var description = document.getElementById("weather-main");
+  description.innerHTML = data.weather[0].description;
+  console.log(description);
 };
 
 function buttonClickGET() {
