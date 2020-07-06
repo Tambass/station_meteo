@@ -1,19 +1,22 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100vh;
     background-color: rgb(68, 129, 185);
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 /* première section
 ====================*/
 
-.en-tete{
-    position: absolute;
+.en-tete {
     top: 50px;
     left: 250px;
     background-color: rgba(255, 255, 255, 0.637);
@@ -23,48 +26,93 @@ body{
     padding: 20px;
 }
 
-.ville h1{
+.ville h1 {
     text-transform: uppercase;
     margin-bottom: 10px;
     color: rgb(255, 255, 255);
 }
 
-.mise-jour h2{
+.mise-jour h2 {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.445);
 }
 
-.temperature{
+.temperature {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
 }
-.svg{
+
+.svg {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.svg img{
+
+.svg img {
     height: 60px;
 }
 
-.svg h3{
+.svg h3 {
     font-size: 18px;
     color: #fff;
 }
 
-.temp{
+.temp {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
-.temp span{
+
+.temp span {
     font-size: 35px;
 }
-.temp h3{
+
+.temp h3 {
     font-size: 18px;
     color: #fff;
 }
-.risque{
+
+.risque {
     font-size: 14px;
+}
+
+.card {
+    margin-top: 20px;
+    height: 200px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.637);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.card h2{
+    margin-bottom: 20px;
+}
+
+.card ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    font-size: 10px;
+}
+
+.card ul li {
+    margin: 0 30px;
+}
+
+.card ul li a {
+    text-decoration: none;
+}
+
+.card img {
+    width: 30px;
+    margin: 8px 0;
+}
+
+.humidite img{
+    width: 5px;
 }
