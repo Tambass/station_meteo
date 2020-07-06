@@ -10,8 +10,12 @@ body{
     position: relative;
 }
 
+main{
+    display: flex;
+    flex-direction: column;
+}
+
 section{
-    position: absolute;
     top: 50px;
     left: 250px;
     background-color: #fff;
@@ -38,4 +42,13 @@ section{
     margin: 10px 0;
 }
 
-
+.card{
+    height: 200px;
+    width: 500px;
+}
+.card ul{
+    display: flex;
+}
+.card img{
+    width: 50px;
+}
