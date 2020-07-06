@@ -80,6 +80,16 @@ main{
 .risque {
     font-size: 14px;
 }
+.card{
+    height: 200px;
+    width: 500px;
+}
+.card ul{
+    display: flex;
+}
+.card img{
+    width: 50px;
+}
 
 .card {
     margin-top: 20px;
