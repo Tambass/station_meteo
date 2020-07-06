@@ -9,11 +9,16 @@ body{
     background-color: rgb(68, 129, 185);
     position: relative;
 }
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
 /* première section
 ====================*/
 
 .en-tete{
-    position: absolute;
     top: 50px;
     left: 250px;
     background-color: rgba(255, 255, 255, 0.637);
@@ -48,23 +53,13 @@ body{
     height: 60px;
 }
 
-.svg h3{
-    font-size: 18px;
-    color: #fff;
+.card{
+    height: 200px;
+    width: 500px;
 }
-
-.temp{
+.card ul{
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }
-.temp span{
-    font-size: 35px;
-}
-.temp h3{
-    font-size: 18px;
-    color: #fff;
-}
-.risque{
-    font-size: 14px;
+.card img{
+    width: 50px;
 }
