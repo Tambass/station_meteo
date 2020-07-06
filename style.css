@@ -48,7 +48,16 @@ section{
 }
 .card ul{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+.card ul li{
+    margin: 10px;
+}
+.card ul li a{
+    text-decoration: none;
 }
 .card img{
-    width: 50px;
+    width: 30px;
 }
