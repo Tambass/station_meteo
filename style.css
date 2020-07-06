@@ -18,6 +18,25 @@ main{
 /* première section
 ====================*/
 
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 15px;
+    background-color:rgba(255, 255, 255, 0.308);
+}
+.search input{
+    background-color: transparent;
+    border: none;
+    padding: 0 10px;
+    margin-right: 20px;
+    width: 250px;
+    outline: none;
+}
+
 .en-tete{
     top: 50px;
     left: 250px;
