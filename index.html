@@ -13,11 +13,16 @@
 <body>
 
     <main>
-        <div class="search">
-            <input role="textbox" id="queryLoc" type="text" placeholder="recherche par ville ou code postale" value="roche-sur-yon">
-            <i class="fas fa-search" onclick="buttonClickGET()"></i>
-            
-        </div>
+        <form>
+            <div class="search">
+                <input  id="queryLoc" type="text" placeholder="recherche par code postale" >
+                
+                <input id="loc-city" type="text" placeholder="choississez votre commune">
+    
+                <i class="fas fa-search" onclick="buttonClickGET()"></i>
+            </div>
+        </form>
+       
         
         
         <section class="en-tete">

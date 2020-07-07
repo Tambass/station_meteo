@@ -28,7 +28,6 @@ function buttonClickGET() {
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     queryLoc +
     "&appid=b7062e52926ecc78dde9910e256b1067&units=metric";
-
   $.get(url, callBackGetSuccess)
     .done(function () {
       //alert( "second success" );
@@ -39,4 +38,5 @@ function buttonClickGET() {
     .always(function () {
       //alert( "finished" );
     });
+    
 }
