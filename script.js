@@ -63,9 +63,13 @@ var callBackGetSuccess = function (data) {
   //alert("Meteo temp  : "  + data.main.temp);
   var temp = document.getElementById("temp");
   temp.innerHTML = data.main.temp + "°C";
+
   var description = document.getElementById("weather-main");
   description.innerHTML = data.weather[0].description;
   console.log(description);
+
+  var image = data.weather[0].icon;
+  $("#weather-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
 };
 
 function buttonClickGET() {
@@ -75,7 +79,7 @@ function buttonClickGET() {
   var url =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     loccity +
-    "&appid=b7062e52926ecc78dde9910e256b1067&units=metric";
+    "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric";
   $.get(url, callBackGetSuccess)
     .done(function () {
       //alert( "second success" );
