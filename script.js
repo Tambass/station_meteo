@@ -6,6 +6,8 @@ const miseAJour = document.getElementById("maj");
 miseAJour.innerText = "Mise à jour à " + heure + ":" + minutes;
 //console.log(miseAJour);
 
+
+
 //const city = document.getElementById('city')
 //const queryLoc = document.getElementById('queryLoc').value
 //city.innerText = queryLoc
@@ -17,7 +19,8 @@ var callBackGetSuccess = function (data) {
   temp.innerHTML = data.main.temp + "°C";
   var description = document.getElementById("weather-main");
   description.innerHTML = data.weather[0].description;
-  console.log(description);
+  
+  
 };
 
 function buttonClickGET() {
