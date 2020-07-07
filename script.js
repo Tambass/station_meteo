@@ -18,20 +18,20 @@ $(document).ready(function () {
   const apiUrl = "https://geo.api.gouv.fr/communes?codePostal=";
   const format = "&format=json";
 
-  let zipcode = $("#queryLoc");
-  let city = $("#loc-city");
+  let zipcode = document.querySelector("#queryLoc");
+  let city = document.querySelector("#loc-city");
   //let errorMessage = $("#error-message");
 
   $(zipcode).on("blur", function () {
     let code = $(this).val();
-    //console.log(code);
+    // console.log(code);
     let url = apiUrl + code + format;
-    //console.log(url);
+    // console.log(url);
 
     fetch(url, { method: "get" })
       .then((response) => response.json())
       .then((results) => {
-        //console.log(results);
+        // console.log(results);
         $(city).find("option").remove();
         if (results.length) {
           $(errorMessage).text("").hide();
