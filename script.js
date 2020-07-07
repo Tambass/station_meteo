@@ -18,32 +18,34 @@ $(document).ready(function () {
   const apiUrl = "https://geo.api.gouv.fr/communes?codePostal=";
   const format = "&format=json";
 
-  let zipcode = document.querySelector("#queryLoc");
-  let city = document.querySelector("#loc-city");
-  //let errorMessage = $("#error-message");
+  let queryLoc = $("#queryLoc");
+  let loc_city = $("#loc-city");
+  let errorMessage = $("#error-message");
 
-  $(zipcode).on("blur", function () {
+  $(queryLoc).on("blur", function () {
     let code = $(this).val();
     // console.log(code);
     let url = apiUrl + code + format;
     // console.log(url);
 
-    fetch(url, { method: "get" })
+    fetch(url, {
+        method: "get"
+      })
       .then((response) => response.json())
       .then((results) => {
-        // console.log(results);
-        $(city).find("option").remove();
+        //console.log(results);
+        $(loc_city).find("option").remove();
         if (results.length) {
           $(errorMessage).text("").hide();
           $.each(results, function (key, value) {
             //console.log(value);
-            console.log(value.nom);
-            $(city).append(
+            // console.log(value.nom);
+            $(loc_city).append(
               '<option value="' + value.nom + '">' + value.nom + "</option>"
             );
           });
         } else {
-          if ($(zipcode).val()) {
+          if ($(queryLoc).val()) {
             console.log("Erreur de code postal.");
             $(errorMessage).text("Aucune commmune avec ce code postal.").show();
           } else {
@@ -53,12 +55,13 @@ $(document).ready(function () {
       })
       .catch((err) => {
         console.log(err);
-        $(city).find("option").remove();
+        $(loc_city).find("option").remove();
       });
   });
 });
 
 // Fonction résultat météo
+
 
 var callBackGetSuccess = function (data) {
   //console.log("donnees api", data);
@@ -68,7 +71,28 @@ var callBackGetSuccess = function (data) {
   var description = document.getElementById("weather-main");
   description.innerHTML = data.weather[0].description;
   
+  var icon = document.getElementById("weather-icon");
+  var logo = data.weather[0].icon;
+  var urlImage = "http://openweathermap.org/img/wn/"+ logo +"@2x.png"
+  $
+  icon.innerHTML = urlImage
+   
+console.log(urlImage);
+
   
+  
+  
+  
+  // const nuage = "overcast clouds";
+  // const soleil ="clear sky";
+//  if(description.innerHTML === nuage){
+//   description.innerHTML = description.innerHTML.replace('overcast clouds', 'très nuageux')
+//  }else if(description.innerHTML === soleil){
+//   description.innerHTML = description.innerHTML.replace('clear sky', 'ciel bleu')
+//  }
+ 
+
+//   console.log(description.innerHTML);
 };
 
 function buttonClickGET() {
@@ -78,7 +102,7 @@ function buttonClickGET() {
   var url =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     loccity +
-    "&appid=b7062e52926ecc78dde9910e256b1067&units=metric";
+    "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric";
   $.get(url, callBackGetSuccess)
     .done(function () {
       //alert( "second success" );
