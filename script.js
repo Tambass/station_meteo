@@ -68,16 +68,17 @@ var callBackGetSuccess = function (data) {
   //alert("Meteo temp  : "  + data.main.temp);
   var temp = document.getElementById("temp");
   temp.innerHTML = data.main.temp + "°C";
+
   var description = document.getElementById("weather-main");
   description.innerHTML = data.weather[0].description;
   
-  var icon = document.getElementById("weather-icon");
-  var logo = data.weather[0].icon;
-  var urlImage = "http://openweathermap.org/img/wn/"+ logo +"@2x.png"
-  $
-  icon.innerHTML = urlImage
+//   var icon = document.getElementById("weather-icon");
+//   var logo = data.weather[0].icon;
+//   var urlImage = "http://openweathermap.org/img/wn/"+ logo +"@2x.png"
+//   $
+//   icon.innerHTML = urlImage
    
-console.log(urlImage);
+// console.log(urlImage);
 
   
   
@@ -93,6 +94,10 @@ console.log(urlImage);
  
 
 //   console.log(description.innerHTML);
+  console.log(description);
+
+  var image = data.weather[0].icon;
+  $("#weather-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
 };
 
 function buttonClickGET() {
