@@ -87,6 +87,8 @@ var callBackGetSuccess = function (data) {
   //   console.log(description.innerHTML);
   console.log(description);
 
+  
+
   var image = data.weather[0].icon;
   $("#weather-icon").attr(
     "src",
@@ -97,48 +99,77 @@ var callBackGetSuccess = function (data) {
   // matin.innerText = data.list[0].main.temp;
 };
 
+//fonction pour l affichage du matin au soir
 
+var callBackGet = function (list) {
+  var soleil = new Image();
+  soleil.scr = "./images/solail.png"
+  var neige = new Image();
+  neige.scr = "./images/neige.png"
+  var nuage = new Image();
+  nuage.scr = "./images/nuage.png"
+  var nuageux = new Image();
+  nuageux.scr = "./images/nuageux.png"
+  var orage = new Image();
+  orage.scr = "./images/orage.png"
+  var pluie = new Image();
+  pluie.scr = "./images/pluie.png"
+  var iconTag = document.getElementById('am-icon')
+  var iconAm = list.list[0].weather[0].icon.value;
 
-//fonction pour l affichage du matin au soir 
+  if(iconAm === '01d'){
+    iconTag = soleil
+  }
+  console.log('iconTag :', iconTag);
+  
 
-var callBackGet = function(list){
-
-  var matin = document.querySelector('.temperature-am');
-  matin.innerText = list.list[0].main.temp +"°C"; 
-  var image = list.list[0].weather[0].icon;
-  $("#am-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
-  var humiditeAm = document.querySelector('.humidite-am');
+  var matin = document.querySelector(".temperature-am");
+  matin.innerText = list.list[0].main.temp + "°C";
+  //var image = list.list[0].weather[0].icon;
+  //$("#am-icon").attr(
+  //  "src",
+  //  "http://openweathermap.org/img/wn/" + image + ".png"
+  //);
+  var humiditeAm = document.querySelector(".humidite-am");
   humiditeAm.innerText = list.list[0].main.humidity + "%";
 
-  var apresMidi = document.querySelector('.temperature-pm');
-  apresMidi.innerText = list.list[2].main.temp +"°C"; 
+  var apresMidi = document.querySelector(".temperature-pm");
+  apresMidi.innerText = list.list[2].main.temp + "°C";
   var image = list.list[2].weather[0].icon;
-  $("#pm-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
-  var humiditePm = document.querySelector('.humidite-pm');
+  $("#pm-icon").attr(
+    "src",
+    "http://openweathermap.org/img/wn/" + image + ".png"
+  );
+  var humiditePm = document.querySelector(".humidite-pm");
   humiditePm.innerText = list.list[2].main.humidity + "%";
 
-  var soir = document.querySelector('.temperature-soir');
-  soir.innerText = list.list[4].main.temp +"°C"; 
+  var soir = document.querySelector(".temperature-soir");
+  soir.innerText = list.list[4].main.temp + "°C";
   var image = list.list[4].weather[0].icon;
-  $("#soir-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
-  var humiditeSoir = document.querySelector('.humidite-soir');
+  $("#soir-icon").attr(
+    "src",
+    "http://openweathermap.org/img/wn/" + image + ".png"
+  );
+  var humiditeSoir = document.querySelector(".humidite-soir");
   humiditeSoir.innerText = list.list[4].main.humidity + "%";
 
-  var nuit = document.querySelector('.temperature-nuit');
-  nuit.innerText = list.list[5].main.temp +"°C"; 
+  var nuit = document.querySelector(".temperature-nuit");
+  nuit.innerText = list.list[5].main.temp + "°C";
   var image = list.list[5].weather[0].icon;
-  $("#nuit-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
-  var humiditeNuit = document.querySelector('.humidite-nuit');
+  $("#nuit-icon").attr(
+    "src",
+    "http://openweathermap.org/img/wn/" + image + ".png"
+  );
+  var humiditeNuit = document.querySelector(".humidite-nuit");
   humiditeNuit.innerText = list.list[5].main.humidity + "%";
 
-//chemin pour la date des jours suivants
+  //chemin pour la date des jours suivants
 
   var test = list.list[9].dt_txt;
-  var date = test.split(' ').slice(0, 1).join();
-  var jour = date.slice(5).replace('-', ' ');
-  console.log(jour.split(' ').reverse().join('/'));
-  
-}
+  var date = test.split(" ").slice(0, 1).join();
+  var jour = date.slice(5).replace("-", " ");
+  console.log(jour.split(" ").reverse().join("/"));
+};
 
 function buttonClickGET() {
   var queryLoc = document.getElementById("queryLoc").value.slice(0, 2);
