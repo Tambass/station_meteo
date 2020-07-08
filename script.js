@@ -98,6 +98,9 @@ var callBackGetSuccess = function (data) {
 };
 
 
+
+//fonction pour l affichage du matin au soir 
+
 var callBackGet = function(list){
 
   var matin = document.querySelector('.temperature-am');
@@ -127,6 +130,14 @@ var callBackGet = function(list){
   $("#nuit-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
   var humiditeNuit = document.querySelector('.humidite-nuit');
   humiditeNuit.innerText = list.list[5].main.humidity + "%";
+
+//chemin pour la date des jours suivants
+
+  var test = list.list[9].dt_txt;
+  var date = test.split(' ').slice(0, 1).join();
+  var jour = date.slice(5).replace('-', ' ');
+  console.log(jour.split(' ').reverse().join('/'));
+  
 }
 
 function buttonClickGET() {
