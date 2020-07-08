@@ -75,14 +75,9 @@ var callBackGetSuccess = function (data) {
 //   var icon = document.getElementById("weather-icon");
 //   var logo = data.weather[0].icon;
 //   var urlImage = "http://openweathermap.org/img/wn/"+ logo +"@2x.png"
-//   $
 //   icon.innerHTML = urlImage
    
 // console.log(urlImage);
-
-  
-  
-  
   
   // const nuage = "overcast clouds";
   // const soleil ="clear sky";
@@ -92,23 +87,56 @@ var callBackGetSuccess = function (data) {
 //   description.innerHTML = description.innerHTML.replace('clear sky', 'ciel bleu')
 //  }
  
-
 //   console.log(description.innerHTML);
   console.log(description);
 
   var image = data.weather[0].icon;
   $("#weather-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+
+  // var matin = document.querySelector('.temperature-value');
+  // matin.innerText = data.list[0].main.temp;
+
 };
+
+
+var callBackGet = function(list){
+
+  var matin = document.querySelector('.temperature-am');
+  matin.innerText = list.list[0].main.temp; 
+  var image = list.list[0].weather[0].icon;
+  $("#am-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+
+  var apresMidi = document.querySelector('.temperature-pm');
+  apresMidi.innerText = list.list[2].main.temp; 
+  var image = list.list[2].weather[0].icon;
+  $("#pm-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+
+  var soir = document.querySelector('.temperature-soir');
+  soir.innerText = list.list[4].main.temp; 
+  var image = list.list[4].weather[0].icon;
+  $("#soir-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+
+  var nuit = document.querySelector('.temperature-nuit');
+  nuit.innerText = list.list[5].main.temp; 
+  var image = list.list[5].weather[0].icon;
+  $("#nuit-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+}
 
 function buttonClickGET() {
   var loccity = document.getElementById("loc-city").value;
   var city = document.getElementById("city");
   city.innerText = loccity;
-  var url =
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
+  var url = ["https://api.openweathermap.org/data/2.5/weather?q=" +
     loccity +
-    "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric";
-  $.get(url, callBackGetSuccess)
+    "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric",
+
+    "http://api.openweathermap.org/data/2.5/forecast?q="+
+    loccity + 
+    "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric"
+];
+    
+      
+    $.get(url[0], callBackGetSuccess)
     .done(function () {
       //alert( "second success" );
     })
@@ -118,4 +146,19 @@ function buttonClickGET() {
     .always(function () {
       //alert( "finished" );
     });
-}
+
+
+
+    $.get(url[1], callBackGet)
+    .done(function () {
+      //alert( "second success" );
+    })
+    .fail(function () {
+      alert("error");
+    })
+    .always(function () {
+      //alert( "finished" );
+    });
+    
+
+  }
