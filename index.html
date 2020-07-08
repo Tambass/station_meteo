@@ -10,6 +10,9 @@
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
 
+        
+
+
 </head>
 
 <body>
@@ -19,7 +22,9 @@
             <div class="search">
                 <input id="queryLoc" type="text" placeholder="recherche par code postale">
                 <div style="display: none; color: #f55;" id="error-message"></div>
-                <select id="loc-city" name="loc-city"></select>
+                <select id="loc-city" name="loc-city">
+                    <!-- <option value=""></option> -->
+                </select>
 
                 <i class="fas fa-search" onclick="buttonClickGET()"></i>
             </div>
@@ -46,7 +51,7 @@
                 </div>
             </div>
             <div class="risque">
-                <h4>Probabilité</h4>
+                <h4 id="risque">Probabilité</h4>
             </div>
 
 
@@ -56,21 +61,21 @@
 
         <section class="card">
             <h2>
-                Prévision du jour pour <span id="ville"></span>, <span id="dep"></span>
+                Aujourd'hui à <span id="ville"></span> <span id="dep"></span>
             </h2>
             <ul>
                 <li>
                     <a href="#">
                         <h3>Matin</h3>
                         <div class="temperature">
-                            <span class="temperature-value">15°</span>
+                            <span class="temperature-am">15°</span>
                         </div>
                         <div class="weather">
-                            <img src="images/soleil.png" alt="soleil">
+                            <img id="am-icon" src="images/soleil.png" alt="soleil">
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span class="humidite-value">5%</span>
+                            <span class="humidite-am">5%</span>
                         </div>
                     </a>
                 </li>
@@ -78,14 +83,14 @@
                     <a href="#">
                         <h3>Après-midi</h3>
                         <div class="temperature">
-                            <span class="temperature-value">22°</span>
+                            <span class="temperature-pm">22°</span>
                         </div>
                         <div class="weather">
-                            <img src="images/nuageux.png" alt="">
+                            <img id="pm-icon" src="images/nuageux.png" alt="">
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span class="humidite-value">0</span>
+                            <span class="humidite-pm">0</span>
                         </div>
                     </a>
                 </li>
@@ -93,14 +98,14 @@
                     <a href="#">
                         <h3>Soir</h3>
                         <div class="temperature">
-                            <span class="temperature-value">17°</span>
+                            <span class="temperature-soir">17°</span>
                         </div>
                         <div class="weather">
-                            <img src="images/pluie.png" alt="pluie">
+                            <img id="soir-icon" src="images/pluie.png" alt="pluie">
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span class="humidite-value">5%</span>
+                            <span class="humidite-soir">5%</span>
                         </div>
                     </a>
                 </li>
@@ -108,14 +113,14 @@
                     <a href="#">
                         <h3>Nuit</h3>
                         <div class="temperature">
-                            <span class="temperature-value">11°</span>
+                            <span class="temperature-nuit">11°</span>
                         </div>
                         <div class="weather">
-                            <img src="images/pluie.png" alt="pluie">
+                            <img id="nuit-icon" src="images/pluie.png" alt="pluie">
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span class="humidite-value">5%</span>
+                            <span class="humidite-nuit">5%</span>
                         </div>
                     </a>
                 </li>

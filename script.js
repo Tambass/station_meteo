@@ -12,7 +12,7 @@ miseAJour.innerText = "Mise à jour à " + heure + ":" + minutes;
 
 // API GEO.GOUV.FR
 
-$(document).ready(function () {
+$(document).ready(function (data) {
   const apiUrl = "https://geo.api.gouv.fr/communes?codePostal=";
   const format = "&format=json";
 
@@ -22,11 +22,13 @@ $(document).ready(function () {
 
   $(queryLoc).on("blur", function () {
     let code = $(this).val();
-    //console.log(code);
+    // console.log(code);
     let url = apiUrl + code + format;
-    //console.log(url);
+    // console.log(url);
 
-    fetch(url, { method: "get" })
+    fetch(url, {
+      method: "get",
+    })
       .then((response) => response.json())
       .then((results) => {
         //console.log(results);
@@ -35,7 +37,7 @@ $(document).ready(function () {
           $(errorMessage).text("").hide();
           $.each(results, function (key, value) {
             //console.log(value);
-            console.log(value.nom);
+            // console.log(value.nom);
             $(loc_city).append(
               '<option value="' + value.nom + '">' + value.nom + "</option>"
             );
@@ -66,21 +68,99 @@ var callBackGetSuccess = function (data) {
 
   var description = document.getElementById("weather-main");
   description.innerHTML = data.weather[0].description;
+
+  //   var icon = document.getElementById("weather-icon");
+  //   var logo = data.weather[0].icon;
+  //   var urlImage = "http://openweathermap.org/img/wn/"+ logo +"@2x.png"
+  //   icon.innerHTML = urlImage
+
+  // console.log(urlImage);
+
+  // const nuage = "overcast clouds";
+  // const soleil ="clear sky";
+  //  if(description.innerHTML === nuage){
+  //   description.innerHTML = description.innerHTML.replace('overcast clouds', 'très nuageux')
+  //  }else if(description.innerHTML === soleil){
+  //   description.innerHTML = description.innerHTML.replace('clear sky', 'ciel bleu')
+  //  }
+
+  //   console.log(description.innerHTML);
   console.log(description);
 
   var image = data.weather[0].icon;
-  $("#weather-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  $("#weather-icon").attr(
+    "src",
+    "http://openweathermap.org/img/wn/" + image + ".png"
+  );
+
+  // var matin = document.querySelector('.temperature-value');
+  // matin.innerText = data.list[0].main.temp;
 };
 
+
+var callBackGet = function(list){
+
+  var matin = document.querySelector('.temperature-am');
+  matin.innerText = list.list[0].main.temp +"°C"; 
+  var image = list.list[0].weather[0].icon;
+  $("#am-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeAm = document.querySelector('.humidite-am');
+  humiditeAm.innerText = list.list[0].main.humidity + "%";
+
+  var apresMidi = document.querySelector('.temperature-pm');
+  apresMidi.innerText = list.list[2].main.temp +"°C"; 
+  var image = list.list[2].weather[0].icon;
+  $("#pm-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditePm = document.querySelector('.humidite-pm');
+  humiditePm.innerText = list.list[2].main.humidity + "%";
+
+  var soir = document.querySelector('.temperature-soir');
+  soir.innerText = list.list[4].main.temp +"°C"; 
+  var image = list.list[4].weather[0].icon;
+  $("#soir-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeSoir = document.querySelector('.humidite-soir');
+  humiditeSoir.innerText = list.list[4].main.humidity + "%";
+
+  var nuit = document.querySelector('.temperature-nuit');
+  nuit.innerText = list.list[5].main.temp +"°C"; 
+  var image = list.list[5].weather[0].icon;
+  $("#nuit-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeNuit = document.querySelector('.humidite-nuit');
+  humiditeNuit.innerText = list.list[5].main.humidity + "%";
+}
+
 function buttonClickGET() {
+  var queryLoc = document.getElementById("queryLoc").value.slice(0, 2);
+  var dep = document.getElementById("dep");
   var loccity = document.getElementById("loc-city").value;
   var city = document.getElementById("city");
+  var city2 = document.getElementById("ville");
   city.innerText = loccity;
-  var url =
+  city2.innerText = loccity;
+  dep.innerText = "(" + queryLoc + ")";
+
+  var url = [
     "https://api.openweathermap.org/data/2.5/weather?q=" +
-    loccity +
-    "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric";
-  $.get(url, callBackGetSuccess)
+      loccity +
+      "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric",
+
+    "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      loccity +
+      "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric",
+  ];
+
+  $.get(url[0], callBackGetSuccess)
+    .done(function () {
+      //alert( "second success" );
+    })
+    .fail(function () {
+      alert("error");
+    })
+    .always(function () {
+      //alert( "finished" );
+    });
+
+  $.get(url[1], callBackGet)
     .done(function () {
       //alert( "second success" );
     })
