@@ -102,24 +102,32 @@ var callBackGetSuccess = function (data) {
 var callBackGet = function(list){
 
   var matin = document.querySelector('.temperature-am');
-  matin.innerText = list.list[0].main.temp; 
+  matin.innerText = list.list[0].main.temp +"°C"; 
   var image = list.list[0].weather[0].icon;
   $("#am-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeAm = document.querySelector('.humidite-am');
+  humiditeAm.innerText = list.list[0].main.humidity + "%";
 
   var apresMidi = document.querySelector('.temperature-pm');
-  apresMidi.innerText = list.list[2].main.temp; 
+  apresMidi.innerText = list.list[2].main.temp +"°C"; 
   var image = list.list[2].weather[0].icon;
   $("#pm-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditePm = document.querySelector('.humidite-pm');
+  humiditePm.innerText = list.list[2].main.humidity + "%";
 
   var soir = document.querySelector('.temperature-soir');
-  soir.innerText = list.list[4].main.temp; 
+  soir.innerText = list.list[4].main.temp +"°C"; 
   var image = list.list[4].weather[0].icon;
   $("#soir-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeSoir = document.querySelector('.humidite-soir');
+  humiditeSoir.innerText = list.list[4].main.humidity + "%";
 
   var nuit = document.querySelector('.temperature-nuit');
-  nuit.innerText = list.list[5].main.temp; 
+  nuit.innerText = list.list[5].main.temp +"°C"; 
   var image = list.list[5].weather[0].icon;
   $("#nuit-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeNuit = document.querySelector('.humidite-nuit');
+  humiditeNuit.innerText = list.list[5].main.humidity + "%";
 }
 
 function buttonClickGET() {
