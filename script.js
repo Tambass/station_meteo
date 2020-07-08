@@ -12,7 +12,7 @@ miseAJour.innerText = "Mise à jour à " + heure + ":" + minutes;
 
 // API GEO.GOUV.FR
 
-$(document).ready(function () {
+$(document).ready(function (data) {
   const apiUrl = "https://geo.api.gouv.fr/communes?codePostal=";
   const format = "&format=json";
 
@@ -132,11 +132,15 @@ var callBackGet = function (list) {
 };
 
 function buttonClickGET() {
+  var queryLoc = document.getElementById("queryLoc").value.slice(0, 2);
+  var dep = document.getElementById("dep");
   var loccity = document.getElementById("loc-city").value;
   var city = document.getElementById("city");
   var city2 = document.getElementById("ville");
   city.innerText = loccity;
   city2.innerText = loccity;
+  dep.innerText = "(" + queryLoc + ")";
+
   var url = [
     "https://api.openweathermap.org/data/2.5/weather?q=" +
       loccity +
