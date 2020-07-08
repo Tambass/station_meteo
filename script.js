@@ -6,15 +6,13 @@ const miseAJour = document.getElementById("maj");
 miseAJour.innerText = "Mise à jour à " + heure + ":" + minutes;
 //console.log(miseAJour);
 
-
-
 //const city = document.getElementById('city')
 //const queryLoc = document.getElementById('queryLoc').value
 //city.innerText = queryLoc
 
 // API GEO.GOUV.FR
 
-$(document).ready(function () {
+$(document).ready(function (data) {
   const apiUrl = "https://geo.api.gouv.fr/communes?codePostal=";
   const format = "&format=json";
 
@@ -29,8 +27,8 @@ $(document).ready(function () {
     // console.log(url);
 
     fetch(url, {
-        method: "get"
-      })
+      method: "get",
+    })
       .then((response) => response.json())
       .then((results) => {
         //console.log(results);
@@ -62,7 +60,6 @@ $(document).ready(function () {
 
 // Fonction résultat météo
 
-
 var callBackGetSuccess = function (data) {
   //console.log("donnees api", data);
   //alert("Meteo temp  : "  + data.main.temp);
@@ -71,31 +68,33 @@ var callBackGetSuccess = function (data) {
 
   var description = document.getElementById("weather-main");
   description.innerHTML = data.weather[0].description;
-  
-//   var icon = document.getElementById("weather-icon");
-//   var logo = data.weather[0].icon;
-//   var urlImage = "http://openweathermap.org/img/wn/"+ logo +"@2x.png"
-//   icon.innerHTML = urlImage
-   
-// console.log(urlImage);
-  
+
+  //   var icon = document.getElementById("weather-icon");
+  //   var logo = data.weather[0].icon;
+  //   var urlImage = "http://openweathermap.org/img/wn/"+ logo +"@2x.png"
+  //   icon.innerHTML = urlImage
+
+  // console.log(urlImage);
+
   // const nuage = "overcast clouds";
   // const soleil ="clear sky";
-//  if(description.innerHTML === nuage){
-//   description.innerHTML = description.innerHTML.replace('overcast clouds', 'très nuageux')
-//  }else if(description.innerHTML === soleil){
-//   description.innerHTML = description.innerHTML.replace('clear sky', 'ciel bleu')
-//  }
- 
-//   console.log(description.innerHTML);
+  //  if(description.innerHTML === nuage){
+  //   description.innerHTML = description.innerHTML.replace('overcast clouds', 'très nuageux')
+  //  }else if(description.innerHTML === soleil){
+  //   description.innerHTML = description.innerHTML.replace('clear sky', 'ciel bleu')
+  //  }
+
+  //   console.log(description.innerHTML);
   console.log(description);
 
   var image = data.weather[0].icon;
-  $("#weather-icon").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  $("#weather-icon").attr(
+    "src",
+    "http://openweathermap.org/img/wn/" + image + ".png"
+  );
 
   // var matin = document.querySelector('.temperature-value');
   // matin.innerText = data.list[0].main.temp;
-
 };
 
 
@@ -131,20 +130,26 @@ var callBackGet = function(list){
 }
 
 function buttonClickGET() {
+  var queryLoc = document.getElementById("queryLoc").value.slice(0, 2);
+  var dep = document.getElementById("dep");
   var loccity = document.getElementById("loc-city").value;
   var city = document.getElementById("city");
+  var city2 = document.getElementById("ville");
   city.innerText = loccity;
-  var url = ["https://api.openweathermap.org/data/2.5/weather?q=" +
-    loccity +
-    "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric",
+  city2.innerText = loccity;
+  dep.innerText = "(" + queryLoc + ")";
 
-    "http://api.openweathermap.org/data/2.5/forecast?q="+
-    loccity + 
-    "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric"
-];
-    
-      
-    $.get(url[0], callBackGetSuccess)
+  var url = [
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+      loccity +
+      "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric",
+
+    "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      loccity +
+      "&lang=fr&appid=b7062e52926ecc78dde9910e256b1067&units=metric",
+  ];
+
+  $.get(url[0], callBackGetSuccess)
     .done(function () {
       //alert( "second success" );
     })
@@ -155,9 +160,7 @@ function buttonClickGET() {
       //alert( "finished" );
     });
 
-
-
-    $.get(url[1], callBackGet)
+  $.get(url[1], callBackGet)
     .done(function () {
       //alert( "second success" );
     })
@@ -167,6 +170,4 @@ function buttonClickGET() {
     .always(function () {
       //alert( "finished" );
     });
-    
-
-  }
+}
