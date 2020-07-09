@@ -66,8 +66,15 @@ var callBackGetSuccess = function (data) {
   var temp = document.getElementById("temp");
   temp.innerHTML = data.main.temp + "°C";
 
+  const body = document.querySelector('body');
+  if(temp.innerHTML >= 25){
+
+  }
+
+
   var description = document.getElementById("weather-main");
   description.innerHTML = data.weather[0].description;
+
 
   //   var icon = document.getElementById("weather-icon");
   //   var logo = data.weather[0].icon;
@@ -85,14 +92,15 @@ var callBackGetSuccess = function (data) {
   //  }
 
   //   console.log(description.innerHTML);
-  console.log(description);
+  // console.log(description);
 
+  
   var image = data.weather[0].icon;
   $("#weather-icon").attr(
     "src",
     "http://openweathermap.org/img/wn/" + image + ".png"
-  );
-
+    );
+    
   // var matin = document.querySelector('.temperature-value');
   // matin.innerText = data.list[0].main.temp;
 };
@@ -133,11 +141,75 @@ var callBackGet = function(list){
 
 //chemin pour la date des jours suivants
 
+  /*J +1
+  ==================*/
+
+const jourUn = document.getElementById('jourUn')
   var test = list.list[9].dt_txt;
   var date = test.split(' ').slice(0, 1).join();
   var jour = date.slice(5).replace('-', ' ');
-  console.log(jour.split(' ').reverse().join('/'));
+  var days = jour.split(' ').reverse().join('/')
+  jourUn.innerText = days
+
+
+  var tempUn = document.querySelector('.temperature-un');
+  tempUn.innerText = list.list[9].main.temp +"°C"; 
+  var image = list.list[9].weather[0].icon;
+  $("#icon-un").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeUn = document.querySelector('.humidite-un');
+  humiditeUn.innerText = list.list[9].main.humidity + "%";
   
+  /*J+2
+  =================*/
+
+  const jourDeux = document.getElementById('jourDeux')
+  var test = list.list[17].dt_txt;
+  var date = test.split(' ').slice(0, 1).join();
+  var jour = date.slice(5).replace('-', ' ');
+  var days = jour.split(' ').reverse().join('/')
+  jourDeux.innerText = days
+
+  var tempDeux = document.querySelector('.temperature-deux');
+  tempDeux.innerText = list.list[17].main.temp +"°C"; 
+  var image = list.list[17].weather[0].icon;
+  $("#icon-deux").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeDeux = document.querySelector('.humidite-deux');
+  humiditeDeux.innerText = list.list[17].main.humidity + "%";
+
+  /*J+3
+  =================*/
+
+  const jourTrois = document.getElementById('jourTrois')
+  var test = list.list[25].dt_txt;
+  var date = test.split(' ').slice(0, 1).join();
+  var jour = date.slice(5).replace('-', ' ');
+  var days = jour.split(' ').reverse().join('/')
+  jourTrois.innerText = days
+
+  var tempTrois = document.querySelector('.temperature-trois');
+  tempTrois.innerText = list.list[25].main.temp +"°C"; 
+  var image = list.list[25].weather[0].icon;
+  $("#icon-trois").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeTrois = document.querySelector('.humidite-trois');
+  humiditeTrois.innerText = list.list[25].main.humidity + "%";
+
+  /*J+4
+  =====================*/
+
+  const jourQuatre = document.getElementById('jourQuatre')
+  var test = list.list[33].dt_txt;
+  var date = test.split(' ').slice(0, 1).join();
+  var jour = date.slice(5).replace('-', ' ');
+  var days = jour.split(' ').reverse().join('/')
+  jourQuatre.innerText = days
+
+  var tempQuatre = document.querySelector('.temperature-quatre');
+  tempQuatre.innerText = list.list[33].main.temp +"°C"; 
+  var image = list.list[33].weather[0].icon;
+  $("#icon-quatre").attr("src", "http://openweathermap.org/img/wn/" + image + ".png");
+  var humiditeQuatre = document.querySelector('.humidite-quatre');
+  humiditeQuatre.innerText = list.list[33].main.humidity + "%";
+
 }
 
 function buttonClickGET() {
@@ -149,6 +221,12 @@ function buttonClickGET() {
   city.innerText = loccity;
   city2.innerText = loccity;
   dep.innerText = "(" + queryLoc + ")";
+
+  var depNext = document.getElementById("dep-next");
+  var cityNext = document.getElementById("ville-next");
+  cityNext.innerText = loccity;
+  depNext.innerText = "(" + queryLoc + ")";
+
 
   var url = [
     "https://api.openweathermap.org/data/2.5/weather?q=" +
