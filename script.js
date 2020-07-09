@@ -1,9 +1,4 @@
-var now = new Date();
-var heure = now.getHours();
-var minutes = now.getMinutes();
 
-const miseAJour = document.getElementById("maj");
-miseAJour.innerText = "Mise à jour à " + heure + ":" + minutes;
 //console.log(miseAJour);
 
 //const city = document.getElementById('city')
@@ -110,6 +105,13 @@ var callBackGetSuccess = function (data) {
 //fonction pour l affichage du matin au soir 
 
 var callBackGet = function(list){
+
+  var now = new Date();
+  var heure = now.getHours();
+  var minutes = now.getMinutes();
+
+  const miseAJour = document.getElementById("maj");
+  miseAJour.innerText = "Mise à jour à " + heure + ":" + minutes;
 
   var matin = document.querySelector('.temperature-am');
   matin.innerText = list.list[0].main.temp +"°C"; 
