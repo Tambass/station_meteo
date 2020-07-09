@@ -17,7 +17,9 @@
 
 <body>
 
-    <main>
+    <h1 style="margin-bottom: 50px; color: #f55; font-size: 100px;">Station Météo</h1>
+
+    <main style="border: 2px solid #fff; padding: 20px 50px; border-radius: 15px;">
         <form method="POST">
             <div class="search">
                 <input id="queryLoc" type="text" placeholder="recherche par code postale">
@@ -46,11 +48,7 @@
                 </div>
                 <div class="svg" id="svg">
                     <img id="weather-icon">
-                    <!--<h3>23°/9°</h3>-->
                 </div>
-            </div>
-            <div class="risque">
-                <h4 id="risque">Probabilité</h4>
             </div>
 
 
@@ -68,14 +66,14 @@
                     <a href="#">
                         <h3>Matin</h3>
                         <div class="temperature">
-                            <span class="temperature-am">15°</span>
+                            <span class="temperature-am"></span>
                         </div>
                         <div class="weather">
-                            <img id="am-icon" src="images/soleil.png" alt="soleil">
+                            <img id="am-icon">
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span class="humidite-am">5%</span>
+                            <span class="humidite-am"></span>
                         </div>
                     </a>
                 </li>
@@ -83,14 +81,14 @@
                     <a href="#">
                         <h3>Après-midi</h3>
                         <div class="temperature">
-                            <span class="temperature-pm">22°</span>
+                            <span class="temperature-pm"></span>
                         </div>
                         <div class="weather">
-                            <img id="pm-icon" src="images/nuageux.png" alt="">
+                            <img id="pm-icon">
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span class="humidite-pm">0</span>
+                            <span class="humidite-pm"></span>
                         </div>
                     </a>
                 </li>
@@ -98,14 +96,14 @@
                     <a href="#">
                         <h3>Soir</h3>
                         <div class="temperature">
-                            <span class="temperature-soir">17°</span>
+                            <span class="temperature-soir"></span>
                         </div>
                         <div class="weather">
-                            <img id="soir-icon" src="images/pluie.png" alt="pluie">
+                            <img id="soir-icon">
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span class="humidite-soir">5%</span>
+                            <span class="humidite-soir"></span>
                         </div>
                     </a>
                 </li>
@@ -113,14 +111,14 @@
                     <a href="#">
                         <h3>Nuit</h3>
                         <div class="temperature">
-                            <span class="temperature-nuit">11°</span>
+                            <span class="temperature-nuit"></span>
                         </div>
                         <div class="weather">
-                            <img id="nuit-icon" src="images/pluie.png" alt="pluie">
+                            <img id="nuit-icon">
                         </div>
                         <div class="humidite">
                             <img src="images/goutte.png" alt="goutte">
-                            <span class="humidite-nuit">5%</span>
+                            <span class="humidite-nuit"></span>
                         </div>
                     </a>
                 </li>
