@@ -140,7 +140,7 @@ var callBackGet = function(list){
   matin.innerText = list.list[0].main.temp +"°C"; 
 //fonction pour l affichage du matin au soir
 
-var callBackGet = function (list) {
+
   /*
   // Variables pour les images
 
@@ -363,5 +363,4 @@ function buttonClickGET() {
     .always(function () {
       //alert( "finished" );
     });
-}
 }
