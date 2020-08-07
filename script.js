@@ -1,9 +1,4 @@
-var now = new Date();
-var heure = now.getHours();
-var minutes = now.getMinutes();
 
-const miseAJour = document.getElementById("maj");
-miseAJour.innerText = "Mise à jour à " + heure + ":" + minutes;
 //console.log(miseAJour);
 
 // API GEO.GOUV.FR
@@ -128,6 +123,21 @@ var callBackGetSuccess = function (data) {
   // matin.innerText = data.list[0].main.temp;
 };
 
+
+
+//fonction pour l affichage du matin au soir 
+
+var callBackGet = function(list){
+
+  var now = new Date();
+  var heure = now.getHours();
+  var minutes = now.getMinutes();
+
+  const miseAJour = document.getElementById("maj");
+  miseAJour.innerText = "Mise à jour à " + heure + ":" + minutes;
+
+  var matin = document.querySelector('.temperature-am');
+  matin.innerText = list.list[0].main.temp +"°C"; 
 //fonction pour l affichage du matin au soir
 
 var callBackGet = function (list) {
@@ -353,4 +363,5 @@ function buttonClickGET() {
     .always(function () {
       //alert( "finished" );
     });
+}
 }
